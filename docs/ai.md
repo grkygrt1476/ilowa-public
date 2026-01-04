@@ -7,12 +7,12 @@ this page keeps the flow high-level and verifiable.
 ## AI Flows (High-level)
 ```mermaid
 flowchart LR
-  IN[Input] --> OPT[OCR/STT (optional)]
-  OPT --> NORM[Parse/Normalize]
-  NORM --> VAL[Validation Gate]
-  VAL --> WR[DB Writer]
-  WR --> PG[(Postgres)]
-  PG --> API[API Response]
+  I["Input"] --> OPT["OCR/STT (optional)"];
+  OPT --> NORM["Parse/Normalize"];
+  NORM --> VAL["Validation Gate"];
+  VAL --> WR["DB Writer"];
+  WR --> PG[(Postgres)];
+  PG --> API["API Response"];
 ```
 
 ```mermaid
