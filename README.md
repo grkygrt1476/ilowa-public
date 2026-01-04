@@ -10,11 +10,11 @@
 ---
 ## Demo
 
-![Demo flow 1](docs/assets/demo_flow_01.png)
+![Demo flow 1](docs/assets/demo_flow_01.jpg)
 
-![Demo flow 2](docs/assets/demo_flow_02.png)
+![Demo flow 2](docs/assets/demo_flow_02.jpg)
 
-![Demo flow 3](docs/assets/demo_flow_03.png)
+![Demo flow 3](docs/assets/demo_flow_03.jpg)
 
 ## Architecture
 
