@@ -1,0 +1,49 @@
+{
+  "name": "welcome-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "lucide-react": "^0.548.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.9.4",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start:win": "powershell -Command \"$envVars = Get-Content ../.env | Where-Object { $_ -match '^REACT_APP_NAVER_MAP_CLIENT_ID=' }; foreach($line in $envVars){ $kv=$line.Split('='); [System.Environment]::SetEnvironmentVariable($kv[0], $kv[1]) }; npm run start:base\"",
+    "build:win": "powershell -Command \"$envVars = Get-Content ../.env | Where-Object { $_ -match '^REACT_APP_NAVER_MAP_CLIENT_ID=' }; foreach($line in $envVars){ $kv=$line.Split('='); [System.Environment]::SetEnvironmentVariable($kv[0], $kv[1]) }; npm run build:base\"",
+    "start:base": "react-scripts start",
+    "build:base": "react-scripts build",
+    "start": "cross-env $(grep ^REACT_APP_NAVER_MAP_CLIENT_ID= ../.env) react-scripts start",
+    "build": "cross-env $(grep ^REACT_APP_NAVER_MAP_CLIENT_ID= ../.env) react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "dev": "npm start"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "cross-env": "^10.1.0"
+  }
+}

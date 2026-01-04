@@ -1,0 +1,50 @@
+# ilowa/docker-compose.yml
+services:
+  db:
+    build:
+      context: .
+      dockerfile: docker/postgres.Dockerfile
+    image: ilowa-postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-ilowa}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ilowa}
+      POSTGRES_DB: ${POSTGRES_DB:-ilowa}
+    ports:
+      - "${DB_PORT:-15432}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  api:
+    build:
+      context: .
+      dockerfile: backend_api/Dockerfile
+    user: "${HOST_UID}:${HOST_GID}"
+    env_file:
+      - .env
+
+    environment:
+      ALLOW_REREGISTER_ON_EXISTING: "true"
+      PYTHONDONTWRITEBYTECODE: "1"
+      POSTGRES_USER: ${POSTGRES_USER:-ilowa}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ilowa}
+      POSTGRES_DB: ${POSTGRES_DB:-ilowa}
+      POSTGRES_HOST: db
+      POSTGRES_PORT: 5432
+      DB_PORT: 5432
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "${API_PORT:-18000}:8000"
+    volumes:
+      - ./backend_api:/app/backend_api
+      - ./ai_modeling:/app/ai_modeling
+    command: ./backend_api/entrypoint.sh
+
+volumes:
+  pgdata:

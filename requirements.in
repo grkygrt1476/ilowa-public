@@ -1,0 +1,38 @@
+# requirements.in  (사람이 읽는 상위 목록; 잠금은 pip-compile/uv로 생성)
+fastapi>=0.115,<1
+uvicorn[standard]>=0.30,<1
+pydantic-settings>=2,<3
+
+# 데이터/DB
+sqlmodel>=0.0.21,<0.0.22
+psycopg2-binary>=2.9,<3
+alembic>=1.13,<2    # 마이그레이션 쓸 거면
+
+# 보안/인증/해시
+python-jose[cryptography]>=3.3,<4   # JWT
+passlib[argon2]>=1.7,<2             # PBKDF2+Argon2
+argon2-cffi>=23,<24                 # Argon2 라이브러리
+
+# Redis (레이트리밋/세션/OTP 쿨다운 등에)
+redis>=5,<6
+
+# 유틸
+python-multipart>=0.0.9,<0.1  # 폼/파일 업로드 있으면
+httpx>=0.27,<0.28             # 외부 API 호출(NCP 등)
+loguru>=0.7,<0.8              # 선택: 로깅 편의
+pymupdf>=1.24,<1.25           # PDF -> 이미지 렌더링
+
+# AI 모델링 연계를 위한 추가 의존성
+numpy>=2.3,<3
+pandas>=2.3,<2.4
+scikit-learn>=1.7,<2
+scipy>=1.16,<2
+joblib>=1.5,<2
+threadpoolctl>=3.5,<4
+beautifulsoup4>=4.14,<5
+requests>=2.32,<3
+
+# 개발 편의(선택): 타입, 린트, 테스트
+# mypy>=1.11,<2
+# ruff>=0.6,<0.7
+# pytest>=8,<9

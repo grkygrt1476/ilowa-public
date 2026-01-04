@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+requests
+beautifulsoup4
+pydantic
+python-multipart
+pandas
+openpyxl
+langgraph
+langchain
+sentence-transformers
+scikit-learn
+pandas
