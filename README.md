@@ -54,7 +54,14 @@ flowchart LR
     ORCH --> PG & CLOVA
 ```
 
+## Prerequisites
+- Docker + Docker Compose plugin (docker compose)
+- GNU Make
+- (Optional) Node.js + npm — if you want to run the frontend locally
+> NOTE: `make demo` requires Docker. If Docker is not available, run only `make scan` and review docs.
+
 ## Quickstart
+
 ```bash
 cp .env.example .env
 make scan
