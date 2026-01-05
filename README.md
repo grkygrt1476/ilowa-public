@@ -108,7 +108,7 @@ DB_PORT는 호스트 publish 포트이며 컨테이너 내부 통신은 항상 `
 ```bash
 cd /tmp
 rm -rf t
-git clone --no-local /home/kihun/ilowa t
+git clone https://github.com/grkygrt1476/ilowa-public.git t
 cd t
 cp .env.example .env
 
