@@ -124,24 +124,24 @@ WANT_WHERE=1 make scan
 API_PORT=18000 DB_PORT=15432 WANT_WHERE=1 make demo
 ```
 
-## Port publish 확인
+#### Port publish 확인
 ```bash
 API_PORT=18000 DB_PORT=15432 HOST_UID=$(id -u) HOST_GID=$(id -g) \
   docker compose -f docker-compose.yml config | grep -nE 'published:|target:'
 ```
 
-## DB 환경값 확인
+#### DB 환경값 확인
 ```bash
 docker compose exec -T api sh -lc 'env | egrep "POSTGRES_HOST|POSTGRES_PORT|DB_PORT|DATABASE_URL" | sort'
 ```
 
-## Proof (실행 확인)
+#### Proof (실행 확인)
 ```bash
 curl -s http://localhost:18000/health && echo
 curl -s "http://localhost:18000/api/v1/jobs?per_page=3" | head
 ```
 
-## Frequently used
+#### Frequently used
 ```bash
 make scan
 make demo
@@ -149,12 +149,12 @@ make logs
 make down
 ```
 
-## Demo seed / embeddings
+#### Demo seed / embeddings
 시드는 `ai_modeling/data_samples/demo_jobs_50.json`을 사용합니다.
 
 임베딩은 `make seed` 또는 `make demo` 실행 중 로컬에서 생성/적재됩니다.
 
-## Troubleshooting (Quick)
+#### Troubleshooting (Quick)
 - Port already allocated: `API_PORT=18001 make demo`
 - Reset demo env: `make down && make demo`
 
